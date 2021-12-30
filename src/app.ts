@@ -10,8 +10,11 @@ const app = express();
 
 app.use(cors());
 
-app.get('/', (_) => {
-  console.log((_ as any).verfiedUser);
+app.get('/', (_, res) => {
+  res.json({
+    message:
+      'To access the data point, simply use /graphql',
+  });
 });
 
 app.use(
@@ -19,6 +22,6 @@ app.use(
   graphqlHTTP({ schema, graphiql: true })
 );
 
-app.listen(3000, () => {
+app.listen(process.env.PORT || 3000, () => {
   console.log('App running on port 3000');
 });

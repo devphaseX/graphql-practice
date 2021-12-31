@@ -22,6 +22,6 @@ app.use(
   graphqlHTTP({ schema, graphiql: true })
 );
 
-app.listen(process.env.PORT || 3000, () => {
+app.listen((process as any).env.PORT || 3000, () => {
   console.log('App running on port 3000 or default ports');
 });
